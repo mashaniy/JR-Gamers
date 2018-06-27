@@ -17,7 +17,11 @@ bot.on("message", async message => {
     let cmd = args.shift().toLowerCase(); 
 
     if (!msg.startsWith(prefix)) return; // agar bot tidak membaca pesan yang tidak ada prefix
-
+	
+    if (cmd === `${prefix}JR`) { // ketik !JR
+	message.channel.send("active!");
+    }
+	
     try {
         let commandFile = require(`./cmds/${cmd}.js`);
         commandFile.run(bot, message, args);
