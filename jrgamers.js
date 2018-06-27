@@ -12,12 +12,10 @@ bot.on("message", async message => {
 	if (message.channel.type === 'dm') return; // bot kita tidak akan menjawab jika kita menggunakan command di DM atau PM
 
     let prefix = config.prefix;
-    let msg = message.content.toLowerCase(); 
-    let args = message.content.slice(prefix.length).trim().split(" "); // commend bisa disisipkan spasi
-    let cmd = args.shift().toLowerCase(); 
+    let messageArray = message.content.split(" "); // commend bisa disisipkan spasi
+    let cmd = messageArray[0]; 
+    let args = messageArray.slice(1);    
 
-    if (!msg.startsWith(prefix)) return; // agar bot tidak membaca pesan yang tidak ada prefix
-	
     if (cmd === `${prefix}JR`) { // ketik !JR
 	message.channel.send("active!");
     }
