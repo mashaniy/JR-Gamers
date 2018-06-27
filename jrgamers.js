@@ -21,15 +21,6 @@ bot.on("message", async message => {
     if (cmd === `${prefix}JR`) { // ketik !JR
 	message.channel.send("active!");
     }
-	
-    try {
-        let commandFile = require(`./cmds/${cmd}.js`);
-        commandFile.run(bot, message, args);
-    } catch (e) {
-        console.log(e.message)
-    } finally {
-        console.log(`${author} menggunakan perintah ${cmd}`);
-    }    
 });
 
 bot.on('guildMemberAdd', member => {
